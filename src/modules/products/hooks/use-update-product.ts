@@ -1,4 +1,3 @@
-// modules/products/hooks/use-update-product.ts
 "use client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { UpdateProductInput } from "../schemas/udate-product.schema";

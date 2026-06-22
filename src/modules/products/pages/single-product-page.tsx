@@ -10,7 +10,7 @@ import FullScreenLoader from "@/shared/components/layout/blocks/FullScreenLoader
 
 export default function SingleProductPage() {
   const params = useParams();
-  let productId;
+  let productId: string;
   if (!params.id) return <FullScreenLoader />;
   if (typeof params.id === "string") {
     productId = params.id;

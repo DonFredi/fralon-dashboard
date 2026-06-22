@@ -1,4 +1,3 @@
-// modules/products/components/tabs/GeneralTab.tsx
 "use client";
 
 import { useEffect, useState } from "react";

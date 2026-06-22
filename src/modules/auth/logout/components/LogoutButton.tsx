@@ -13,7 +13,7 @@ export default function LogoutButton({ children }: { children: ReactNode }) {
   const handleLogout = async () => {
     try {
       await mutateAsync();
-      router.push("/");
+      router.replace("/auth/login");
     } catch (error) {
       console.log("hande out error", error);
     }

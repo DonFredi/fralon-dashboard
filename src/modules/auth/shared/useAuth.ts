@@ -1,12 +1,17 @@
 "use client";
 import { useAuthContext } from "@/providers/AuthProvider";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export const useAuth = () => {
+  const router = useRouter();
   const { user, profile, isAuthenticated, isInitialized } = useAuthContext();
-  if (!user || !profile) {
-    redirect("/auth/login");
-  }
+
+  useEffect(() => {
+    if (isInitialized && (!user || !profile)) {
+      router.replace("/auth/login");
+    }
+  }, [isInitialized, user, profile, router]);
   return { user, profile, isAuthenticated, isInitialized };
 };
 // readonly state
