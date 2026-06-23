@@ -177,9 +177,7 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { profile } = useAuth();
-  if (!profile) {
-    throw new Error("No user available");
-  }
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -201,7 +199,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={{ name: profile.full_name, email: profile.email, avatar: profile.avatar_url || "" }} />
+        <NavUser user={{ name: profile?.full_name, email: profile?.email, avatar: profile?.avatar_url || "" }} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
