@@ -15,6 +15,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  SidebarTrigger,
 } from "@/shared/components/ui/sidebar";
 import {
   LayoutDashboardIcon,
@@ -179,10 +180,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { profile } = useAuth();
 
   return (
-    <Sidebar collapsible="offcanvas" {...props}>
+    <Sidebar collapsible="icon" {...props} className="">
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>
+          <SidebarMenuItem className="flex items-center justify-between">
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:p-1.5!">
               <a href="#">
                 <CommandIcon className="size-5!" />
@@ -190,6 +191,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </a>
               {/* <Badge /> */}
             </SidebarMenuButton>
+            <SidebarTrigger className="md:hidden" />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>

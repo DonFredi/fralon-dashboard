@@ -38,9 +38,9 @@ export default function LoginForm() {
 
   return (
     <SectionWrapper className="flex flex-col gap-4 items-center">
-      <form onSubmit={handleSubmit(handleLogin)} className="w-full max-w-82 mx-auto">
+      <form onSubmit={handleSubmit(handleLogin)} className="w-full max-w-82 mx-auto mt-4">
         <FieldSet className="gap-6">
-          <FieldLegend className="mx-auto mb-8">
+          <FieldLegend className="mx-auto mb-12">
             <PageHeading>Login</PageHeading>
           </FieldLegend>
           <Activity mode={error ? "visible" : "hidden"}>
@@ -58,13 +58,13 @@ export default function LoginForm() {
                 autoComplete="off"
                 id="password"
                 type="password"
-                placeholder="••••••••"
+                placeholder="*******"
                 {...register("password", { required: true })}
               />
               {errors.password && <FieldError>{errors.password.message}</FieldError>}
             </Field>
           </FieldGroup>
-          <div className="flex flex-col gap-2 -mt-2">
+          <div className="flex flex-col gap-2 ">
             <Link href="/auth/forgot-password" className="text-end text-primary">
               Forgot Password?
             </Link>

@@ -32,8 +32,8 @@ export default function Header() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <div className="flex items-center gap-2">
-        <span className="text-muted-foreground">{profile?.role}</span>
+      <div className="flex items-center gap-1">
+        <small className="text-muted-foreground">{profile?.role}</small>
         <BellIcon className="size-5" />
         <LogoutButton>
           <PowerIcon className="size-5" />

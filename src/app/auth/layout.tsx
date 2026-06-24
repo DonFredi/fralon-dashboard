@@ -21,9 +21,9 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
   if (isAuthenticated) return null;
 
   return (
-    <>
+    <div className="min-h-screen flex-1 flex flex-col">
       <header className="">
-        <SectionWrapper>
+        <SectionWrapper className="">
           <Badge />
         </SectionWrapper>
       </header>
@@ -33,6 +33,6 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           <Copyright />
         </SectionWrapper>
       </footer>
-    </>
+    </div>
   );
 }

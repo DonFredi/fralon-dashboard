@@ -46,7 +46,7 @@ export default function GeneralTab({ product }: GeneralTabProps) {
     resolver: zodResolver(updateProductSchema),
     defaultValues: {
       name: product.name,
-      slug: product.slug,
+      slug: product.slug ?? "",
       category_id: product.category_id ?? undefined,
       description: product.description ?? "",
       is_active: product.is_active,
@@ -60,6 +60,12 @@ export default function GeneralTab({ product }: GeneralTabProps) {
       setValue("slug", slugify(name ?? ""), { shouldValidate: true });
     }
   }, [name, slugTouched, setValue]);
+
+  useEffect(() => {
+    if (product) {
+      reset({ ...product, category_id: product.category_id ?? undefined, description: product.description ?? "" });
+    }
+  }, [product, reset]);
 
   const handleUpdateProduct: SubmitHandler<UpdateProductInput> = async (data) => {
     try {

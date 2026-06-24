@@ -1,5 +1,6 @@
 "use client";
 import { useAuth } from "@/modules/auth/shared/useAuth";
+import StatusBadge from "@/modules/products/components/StatusBadge";
 import PageWrapper from "@/shared/components/layout/blocks/PageWrapper";
 import SectionWrapper from "@/shared/components/layout/blocks/SectionWrapper";
 import { H4, H5, P } from "@/shared/components/layout/typography/Typography";
@@ -19,9 +20,10 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper>
         <div className="flex flex-col gap-1.5 w-fit p-6 rounded-xl border border-foreground-border">
+          <small className="text-caption-sm text-foreground-caption">{user?.id}</small>
           <H4>{user?.email}</H4>
           <H5>{user?.full_name}</H5>
-          <P className="text-caption-sm text-foreground-caption">{user?.id}</P>
+          <StatusBadge status={user?.is_active ? "active" : "inactive"} />
         </div>
       </SectionWrapper>
       <SectionWrapper>Hero Section</SectionWrapper>

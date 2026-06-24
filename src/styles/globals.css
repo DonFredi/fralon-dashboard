@@ -195,3 +195,24 @@
     @apply font-bold text-base;
   }
 }
+
+/* globals.css — add below your existing Tailwind directives */
+
+/* success */
+.dark [data-sonner-toaster] {
+  --success-bg: #052e16; /* emerald-950 */
+  --success-border: #166534; /* emerald-800 */
+  --success-text: #bbf7d0; /* emerald-200 */
+
+  --error-bg: #450a0a; /* red-950 */
+  --error-border: #991b1b; /* red-800 */
+  --error-text: #fecaca; /* red-200 */
+
+  --warning-bg: #451a03; /* amber-950 */
+  --warning-border: #92400e; /* amber-800 */
+  --warning-text: #fde68a; /* amber-200 */
+
+  --info-bg: #172554; /* blue-950 */
+  --info-border: #1e40af; /* blue-800 */
+  --info-text: #bfdbfe; /* blue-200 */
+}
