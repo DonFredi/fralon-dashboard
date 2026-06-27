@@ -45,11 +45,11 @@ export default function GeneralTab({ product }: GeneralTabProps) {
   } = useForm<UpdateProductInput>({
     resolver: zodResolver(updateProductSchema),
     defaultValues: {
-      name: product.name,
-      slug: product.slug,
-      category_id: product.category_id ?? undefined,
+      name: product.name ?? "",
+      slug: product.slug ?? "",
+      category_id: product.category_id ?? "",
       description: product.description ?? "",
-      is_active: product.is_active,
+      is_active: product.is_active ?? true,
     },
   });
 
@@ -63,7 +63,11 @@ export default function GeneralTab({ product }: GeneralTabProps) {
 
   useEffect(() => {
     if (product) {
-      reset({ ...product, category_id: product.category_id ?? undefined, description: product.description ?? "" });
+      reset({
+        ...product,
+        category_id: product.category_id ?? undefined,
+        description: product.description ?? undefined,
+      });
     }
   }, [product, reset]);
 
@@ -73,7 +77,7 @@ export default function GeneralTab({ product }: GeneralTabProps) {
       reset({
         ...updatedProduct,
         category_id: updatedProduct.category_id ?? undefined,
-        description: updatedProduct.category_id ?? undefined,
+        description: updatedProduct.description ?? undefined,
       });
     } catch {
       setError("root", { message: "Failed to save changes. Please try again." });

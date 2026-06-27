@@ -77,13 +77,25 @@ export default function AddVariantForm({ productId, onSuccess, onCancel }: AddVa
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Field>
               <FieldLabel>Price (KSH)</FieldLabel>
-              <Input type="number" min={0} step={0.01} disabled={isPending} {...register("price_ksh")} />
+              <Input
+                type="number"
+                min={0}
+                step={0.01}
+                disabled={isPending}
+                {...register("price_ksh", { valueAsNumber: true })}
+              />
               {errors.price_ksh && <FieldError>{errors.price_ksh.message}</FieldError>}
             </Field>
 
             <Field>
               <FieldLabel>Wholesale price (KSH)</FieldLabel>
-              <Input type="number" min={0} step={0.01} disabled={isPending} {...register("wholesale_price_ksh")} />
+              <Input
+                type="number"
+                min={0}
+                step={0.01}
+                disabled={isPending}
+                {...register("wholesale_price_ksh", { valueAsNumber: true })}
+              />
               {errors.wholesale_price_ksh && <FieldError>{errors.wholesale_price_ksh.message}</FieldError>}
             </Field>
           </div>
@@ -92,13 +104,18 @@ export default function AddVariantForm({ productId, onSuccess, onCancel }: AddVa
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Field>
               <FieldLabel>Stock quantity</FieldLabel>
-              <Input type="number" min={0} disabled={isPending} {...register("stock_quantity")} />
+              <Input
+                type="number"
+                min={0}
+                disabled={isPending}
+                {...register("stock_quantity", { valueAsNumber: true })}
+              />
               {errors.stock_quantity && <FieldError>{errors.stock_quantity.message}</FieldError>}
             </Field>
 
             <Field>
               <FieldLabel>Weight (g)</FieldLabel>
-              <Input type="number" min={10} disabled={isPending} {...register("weight_gms")} />
+              <Input type="number" min={10} disabled={isPending} {...register("weight_gms", { valueAsNumber: true })} />
               {errors.weight_gms && <FieldError>{errors.weight_gms.message}</FieldError>}
             </Field>
           </div>
