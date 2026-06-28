@@ -37,49 +37,41 @@ export default function LoginForm() {
   };
 
   return (
-    <SectionWrapper className="flex flex-col gap-4">
-      <form onSubmit={handleSubmit(handleLogin)} className="w-full max-w-82 mx-auto">
-        <FieldSet className="gap-6">
-          <FieldLegend className="mx-auto mb-10">
-            <PageHeading>Login</PageHeading>
-          </FieldLegend>
-          <Activity mode={error ? "visible" : "hidden"}>
-            <FormError>{getErrorMessage(error)}</FormError>
-          </Activity>
-          <FieldGroup className="gap-3">
-            <Field>
-              <FieldLabel htmlFor="email">Email</FieldLabel>
-              <Input id="email" type="email" placeholder="you@example.com" {...register("email", { required: true })} />
-              {errors.email && <FieldError>{errors.email.message}</FieldError>}
-            </Field>
-            <Field>
-              <FieldLabel htmlFor="password">Password</FieldLabel>
-              <Input
-                autoComplete="off"
-                id="password"
-                type="password"
-                placeholder="*******"
-                {...register("password", { required: true })}
-              />
-              {errors.password && <FieldError>{errors.password.message}</FieldError>}
-            </Field>
-          </FieldGroup>
-          <div className="flex flex-col gap-2 ">
-            <Link href="/auth/forgot-password" className="text-end text-primary">
-              Forgot Password?
-            </Link>
-            <Button type="submit" disabled={isPending} className="w-full">
-              {isPending ? "Logging In..." : "Log in"}
-            </Button>
-          </div>
-        </FieldSet>
-      </form>
-      {/* <p className="">
-        Do not have an account?{" "}
-        <Link href="/auth/register" className="font-medium text-lg underline">
-          Register
-        </Link>
-      </p> */}
-    </SectionWrapper>
+    <form onSubmit={handleSubmit(handleLogin)} className="w-full max-w-82 mx-auto">
+      <FieldSet className="gap-6">
+        <FieldLegend className="mx-auto mb-10">
+          <PageHeading>Login</PageHeading>
+        </FieldLegend>
+        <Activity mode={error ? "visible" : "hidden"}>
+          <FormError>{getErrorMessage(error)}</FormError>
+        </Activity>
+        <FieldGroup className="gap-3">
+          <Field>
+            <FieldLabel htmlFor="email">Email</FieldLabel>
+            <Input id="email" type="email" placeholder="you@example.com" {...register("email", { required: true })} />
+            {errors.email && <FieldError>{errors.email.message}</FieldError>}
+          </Field>
+          <Field>
+            <FieldLabel htmlFor="password">Password</FieldLabel>
+            <Input
+              autoComplete="off"
+              id="password"
+              type="password"
+              placeholder="*******"
+              {...register("password", { required: true })}
+            />
+            {errors.password && <FieldError>{errors.password.message}</FieldError>}
+          </Field>
+        </FieldGroup>
+        <div className="flex flex-col gap-2 ">
+          <Link href="/auth/forgot-password" className="text-end text-primary">
+            Forgot Password?
+          </Link>
+          <Button type="submit" disabled={isPending} className="w-full">
+            {isPending ? "Logging In..." : "Log in"}
+          </Button>
+        </div>
+      </FieldSet>
+    </form>
   );
 }

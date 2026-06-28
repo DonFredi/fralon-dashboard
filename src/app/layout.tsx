@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="min-h-screen">
-      <body className={`${bodyFont.variable} ${headingFont.variable} antialiased flex flex-col`}>
+      <body className={`${bodyFont.variable} ${headingFont.variable} antialiased flex flex-col min-h-screen`}>
         {/* Organization */}
         {/* <JsonLd data={organizationSchema} /> */}
         {/* Website */}
