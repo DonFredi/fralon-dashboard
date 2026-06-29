@@ -2,6 +2,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { productImagesService } from "../../services/product-images.service";
+import { productKeys } from "../../lib/product-query-keys";
 
 interface SaveRecordsPayload {
   storagePaths: string[];
@@ -15,9 +16,7 @@ export function useSaveImageRecords(productId: string) {
     mutationFn: ({ storagePaths, variantId }: SaveRecordsPayload) =>
       productImagesService.saveImageRecords(productId, storagePaths, variantId),
     onSuccess: (saved) => {
-      queryClient.invalidateQueries({
-        queryKey: ["products", productId, "images"],
-      });
+      queryClient.invalidateQueries({ queryKey: productKeys.images(productId) });
       toast.success(saved.length === 1 ? "Image saved" : `${saved.length} images saved`);
     },
     onError: () => {

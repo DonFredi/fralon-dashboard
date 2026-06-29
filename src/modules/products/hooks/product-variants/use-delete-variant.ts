@@ -2,6 +2,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { productVariantsService } from "../../services/product-variants.service";
+import { productKeys } from "../../lib/product-query-keys";
 
 export function useDeleteVariant(productId: string) {
   const queryClient = useQueryClient();
@@ -9,9 +10,7 @@ export function useDeleteVariant(productId: string) {
   return useMutation({
     mutationFn: (variantId: string) => productVariantsService.deleteVariant(variantId),
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["products", productId, "variants"],
-      });
+      queryClient.invalidateQueries({ queryKey: productKeys.variants(productId) });
       toast.success("Variant deleted");
     },
     onError: () => {

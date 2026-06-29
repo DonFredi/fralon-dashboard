@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { UpdateProductInput } from "../../schemas/udate-product.schema";
 import { productsService } from "../../services/products.service";
 import { toast } from "sonner";
+import { productKeys } from "../../lib/product-query-keys";
 
 export function useUpdateProduct(productId: string) {
   const queryClient = useQueryClient();
@@ -10,11 +11,11 @@ export function useUpdateProduct(productId: string) {
   return useMutation({
     mutationFn: (input: UpdateProductInput) => productsService.updateProduct(productId, input),
     onSuccess: (updated) => {
-      queryClient.setQueryData(["products", productId], (old: any) => ({
+      queryClient.setQueryData(productKeys.detail(productId), (old: any) => ({
         ...old,
         ...updated,
       }));
-      queryClient.invalidateQueries({ queryKey: ["products"] }); // refresh the list view too
+      queryClient.invalidateQueries({ queryKey: productKeys.all() }); // refresh the list view too
       toast.success("Product updated successfully");
     },
     onError: () => {

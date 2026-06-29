@@ -2,6 +2,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { productImagesService } from "../../services/product-images.service";
+import { productKeys } from "../../lib/product-query-keys";
 
 export function useSetPrimaryImage(productId: string) {
   const queryClient = useQueryClient();
@@ -9,7 +10,7 @@ export function useSetPrimaryImage(productId: string) {
   return useMutation({
     mutationFn: (imageId: string) => productImagesService.setPrimaryImage(productId, imageId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products", productId, "images"] });
+      queryClient.invalidateQueries({ queryKey: productKeys.images(productId) });
       toast.success("Primary image updated");
     },
     onError: () => {

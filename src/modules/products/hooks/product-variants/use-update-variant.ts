@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { productVariantsService } from "../../services/product-variants.service";
 import type { VariantInput } from "../../schemas/product-variant.schema";
+import { productKeys } from "../../lib/product-query-keys";
 
 export function useUpdateVariant(productId: string) {
   const queryClient = useQueryClient();
@@ -11,9 +12,7 @@ export function useUpdateVariant(productId: string) {
     mutationFn: ({ variantId, input }: { variantId: string; input: VariantInput }) =>
       productVariantsService.updateVariant(variantId, input),
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["products", productId, "variants"],
-      });
+      queryClient.invalidateQueries({ queryKey: productKeys.variants(productId) });
       toast.success("Variant updated", {
         description: "Changes saved successfully.",
       });
