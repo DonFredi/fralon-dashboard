@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { PlusIcon, Search } from "lucide-react";
 import { Input } from "@/shared/components/ui/input";
 import { Button } from "@/shared/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components/ui/select";
@@ -54,7 +54,7 @@ export default function ProductsToolbar({
 
         {/* category filter */}
         <Select value={category} onValueChange={onCategoryChange}>
-          <SelectTrigger className="h-8 w-36 text-xs">
+          <SelectTrigger className="h-8 w-36 text-sm">
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent>
@@ -69,7 +69,7 @@ export default function ProductsToolbar({
 
         {/* status filter */}
         <Select value={status} onValueChange={onStatusChange}>
-          <SelectTrigger className="h-8 w-28 text-xs">
+          <SelectTrigger className="h-8 w-28 text-sm">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
@@ -84,7 +84,9 @@ export default function ProductsToolbar({
 
         {/* add product */}
         <Button size="sm" asChild>
-          <Link href="/products/new">Add product</Link>
+          <Link href="/products/new">
+            <PlusIcon className="size-4" /> Add product
+          </Link>
         </Button>
       </div>
     </div>

@@ -9,7 +9,6 @@ import { useLogin } from "../useLogin";
 import { useRouter } from "next/navigation";
 import { getErrorMessage } from "@/shared/utils/get-error-message";
 import { Activity } from "react";
-import SectionWrapper from "@/shared/components/layout/blocks/SectionWrapper";
 import PageHeading from "@/shared/components/layout/typography/PageHeading";
 import FormError from "@/shared/components/shared/FormError";
 import { Input } from "@/shared/components/ui/input";

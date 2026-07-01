@@ -31,7 +31,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={`/products/${product.id}`}
-      className="group flex flex-col rounded-lg border bg-card overflow-hidden hover:shadow-md transition-shadow"
+      className="group flex flex-col rounded-md border bg-card overflow-hidden hover:shadow-md transition-shadow"
     >
       {/* ── Thumbnail ── */}
       <div className="relative aspect-square w-full bg-muted overflow-hidden">

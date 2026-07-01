@@ -59,7 +59,7 @@ export default function ProductImageCard({
       )}
 
       {/* hover controls */}
-      <div className="absolute inset-0 flex items-start justify-between p-2 opacity-0 transition-opacity group-hover:opacity-100">
+      <div className="absolute inset-0 flex items-start justify-between p-2 lg:opacity-0 transition-opacity lg:group-hover:opacity-100">
         {!isPrimary ? (
           <Button
             type="button"

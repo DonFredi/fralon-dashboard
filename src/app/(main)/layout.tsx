@@ -25,7 +25,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
       <AppSidebar />
       <SidebarInset className="min-h-screen">
         <Header />
-        <main className="flex flex-1 flex-col p-6">{children}</main>
+        <main className="flex flex-1 flex-col p-2 md:p-4">{children}</main>
         <Footer />
       </SidebarInset>
     </SidebarProvider>
