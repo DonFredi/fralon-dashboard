@@ -25,7 +25,7 @@ export default function LogoutButton({ children }: { children: ReactNode }) {
         disabled={isPending}
         onClick={handleLogout}
         variant="ghost"
-        className="py-2 px-4 text-destructive hover:bg-red-200 hover:text-destructive"
+        className="p-2 rounded-full text-destructive hover:bg-red-200 hover:text-destructive"
       >
         {isPending && <small>Logging out</small>}
         {children}

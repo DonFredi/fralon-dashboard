@@ -32,8 +32,11 @@ export default function Header() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <div className="flex items-centersss">
-        <small className="text-muted-foreground border border-border rounded-full px-3 py-0.5">{profile?.role}</small>
+      <div className="flex items-center gap-x-1">
+        <small className="text-muted-foreground border border-border flex items-center gap-x-1.5 text-sm h-fit w-fit rounded-full px-3 py-0.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+          {profile?.role}
+        </small>
         <LogoutButton>
           <PowerIcon className="size-5" />
         </LogoutButton>
