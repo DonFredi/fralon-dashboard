@@ -2,7 +2,6 @@
 
 import * as React from "react";
 
-import { NavDocuments } from "@/shared/components/nav-documents";
 import { NavMain } from "@/shared/components/nav-main";
 import { NavSecondary } from "@/shared/components/nav-secondary";
 import { NavUser } from "@/shared/components/nav-user";
@@ -20,15 +19,9 @@ import {
 import {
   LayoutDashboardIcon,
   UsersIcon,
-  CameraIcon,
-  FileTextIcon,
   Settings2Icon,
   CircleHelpIcon,
   SearchIcon,
-  DatabaseIcon,
-  FileChartColumnIcon,
-  FileIcon,
-  CommandIcon,
   ShelvingUnitIcon,
   ShoppingCartIcon,
   PackageIcon,
@@ -36,15 +29,11 @@ import {
   ArrowRightLeft,
   HousePlugIcon,
   ContactRoundIcon,
+  CommandIcon,
 } from "lucide-react";
 import { useAuth } from "@/modules/auth/shared/useAuth";
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Dashboard",
@@ -92,58 +81,10 @@ const data = {
       icon: <ContactRoundIcon />,
     },
   ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: <CameraIcon />,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: <FileTextIcon />,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: <FileTextIcon />,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/settings",
       icon: <Settings2Icon />,
     },
     {
@@ -157,30 +98,13 @@ const data = {
       icon: <SearchIcon />,
     },
   ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: <DatabaseIcon />,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: <FileChartColumnIcon />,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: <FileIcon />,
-    },
-  ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { profile } = useAuth();
 
   return (
-    <Sidebar collapsible="icon" {...props} className="">
+    <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem className="flex items-center justify-between">
@@ -189,7 +113,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <CommandIcon className="size-5!" />
                 <span className="text-base font-semibold">Fralon Inc.</span>
               </a>
-              {/* <Badge /> */}
             </SidebarMenuButton>
             <SidebarTrigger className="md:hidden" />
           </SidebarMenuItem>
@@ -197,11 +120,16 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={{ name: profile?.full_name, email: profile?.email, avatar: profile?.avatar_url || "" }} />
+        <NavUser
+          user={{
+            name: profile?.full_name ?? "Unknown",
+            email: profile?.email ?? "",
+            avatar: profile?.avatar_url ?? "",
+          }}
+        />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
