@@ -21,12 +21,16 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   const [isInitialized, setIsInitialized] = useState(false);
 
   const fetchProfile = async (userId: string) => {
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("*,addresses(*)")
-      .eq("id", userId)
-      .eq("addresses.is_default", true)
-      .single<Profile>();
+    const { data } = await supabase.from("profiles").select("*").eq("id", userId).single<Profile>();
+
+    // account has been deactivated — sign out immediately
+    if (data && !data.is_active) {
+      await supabase.auth.signOut();
+      setUser(null);
+      setProfile(null);
+      return;
+    }
+
     setProfile(data);
   };
 
@@ -54,7 +58,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
         /* Sentry.setUser({ id: session.user.id, email: session.user.email }); */
       } else {
         setProfile(null);
-        /*   Sentry.setUser(null); */
+        /* Sentry.setUser(null); */
       }
     });
 

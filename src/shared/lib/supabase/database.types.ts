@@ -1070,7 +1070,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      demote_to_customer: {
+        Args: { target_user_id: string }
+        Returns: undefined
+      }
+      promote_to_staff: { Args: { target_user_id: string }; Returns: undefined }
+      set_staff_active: {
+        Args: { active: boolean; target_user_id: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
